@@ -6,6 +6,22 @@
 
 </div>
 
+# 🐘 | Tópicos
+
+## Data Manipulation Language (DML)
+
+A **Data Manipulation Language** é o sub idioma responsável pela adição, edição ou exclusão de dados de um banco de dados. Em SQL, isto corresponde ao `INSERT`, `UPDATE`, e `DELETE`.
+
+Folder: [Data Manipulation Language_DML](/Data Manipulation Language_DML)
+
+## Data Definition Language (DDL)
+
+A linguagem de definição de dados é a sub-língua responsável pela definição da forma como os dados são estruturados em um banco de dados. Em SQL, isto corresponde à manipulação de tabelas através do `CREATE TABLE`, `ALTER TABLE`, e `DROP TABLE`.
+
+Folder: [Data Definition Language_DDL](/Data Definition Language_DDL)
+
+----
+
 # 🐘 | 1° Método de instalação
 ### **1. Atualize os pacotes do sistema**
 Abra o terminal e atualize o índice dos pacotes do sistema:
