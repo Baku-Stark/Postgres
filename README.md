@@ -1,5 +1,11 @@
 # Postgres SQL
 
+<div align="center">
+
+<img height="50" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original-wordmark.svg" />
+
+</div>
+
 # 🐘 | 1° Método de instalação
 ### **1. Atualize os pacotes do sistema**
 Abra o terminal e atualize o índice dos pacotes do sistema:
