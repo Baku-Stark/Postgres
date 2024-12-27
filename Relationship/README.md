@@ -3,7 +3,9 @@
 
 <div align="center">
 
-<img height="150" width="150" src="https://th.bing.com/th/id/OIP.qSUJggK1vr-c9K2sSlxs4AHaCT?rs=1&pid=ImgDetMain" />
+<img height="150" width="250" src="https://th.bing.com/th/id/OIP.qSUJggK1vr-c9K2sSlxs4AHaCT?rs=1&pid=ImgDetMain" />
+
+`🐘 : relationship`
 
 </div>
 
@@ -36,6 +38,49 @@ CREATE TABLE public.Positions (
 ### 0:*
 
 ```sql
+-- foreign keys
+-- Reference: Clients_Positions (table: Clients)
+ALTER TABLE public.Clients ADD CONSTRAINT Clients_Positions
+    FOREIGN KEY (Positions_ID)
+    REFERENCES public.Positions (ID)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE;
+```
+
+### 0:1
+
+```sql
+-- foreign keys
+-- Reference: Clients_Positions (table: Clients)
+ALTER TABLE public.Clients ADD CONSTRAINT Clients_Positions
+    FOREIGN KEY (ID_Position)
+    REFERENCES public.Positions (ID)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE;
+```
+
+### 1:*
+
+```sql
+-- foreign keys
+-- Reference: Clients_Positions (table: Clients)
+ALTER TABLE public.Clients ADD CONSTRAINT Clients_Positions
+    FOREIGN KEY (ID_Position)
+    REFERENCES public.Positions (ID)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE;
+```
+
+### 1:1
+
+```sql
+-- foreign keys
+-- Reference: Clients_Positions (table: Clients)
+ALTER TABLE public.Clients ADD CONSTRAINT Clients_Positions
+    FOREIGN KEY (ID_Position)
+    REFERENCES public.Positions (ID)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE;
 ```
 
 ----
