@@ -1,4 +1,4 @@
-# Postgres SQL
+# 🐘 | Postgres SQL
 
 <div align="center">
 
