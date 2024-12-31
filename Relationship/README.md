@@ -130,6 +130,96 @@ Veja como determinar o tipo de relacionamento observando o SQL:
 
 ----
 
+# 🐘 | JOINs
+
+Abaixo estão exemplos de todos os principais tipos de **JOINS** no PostgreSQL aplicados às tabelas `Clients` e `Positions`. Além disso, explico para que serve cada tipo de JOIN.
+
+### **1. INNER JOIN**
+**Serve para**: Combinar registros onde há correspondência em ambas as tabelas.
+
+```sql
+SELECT c.ID AS client_id, c.name AS client_name, p.name_position AS position
+FROM public.Clients c
+INNER JOIN public.Positions p
+ON c.Positions_ID = p.ID;
+```
+
+**Resultado**: Retorna apenas os clientes que possuem uma posição válida (ou seja, que estão corretamente relacionados na tabela `Positions`).
+
+### **2. LEFT JOIN (ou LEFT OUTER JOIN)**
+**Serve para**: Retorna todos os registros da tabela à esquerda (neste caso, `Clients`), mesmo que não haja correspondência na tabela à direita (`Positions`). Os valores sem correspondência na tabela à direita aparecem como `NULL`.
+
+```sql
+SELECT c.ID AS client_id, c.name AS client_name, p.name_position AS position
+FROM public.Clients c
+LEFT JOIN public.Positions p
+ON c.Positions_ID = p.ID;
+```
+
+**Resultado**: Retorna todos os clientes, incluindo aqueles que não têm um cargo definido (ou seja, sem correspondência em `Positions`).
+
+### **3. RIGHT JOIN (ou RIGHT OUTER JOIN)**
+**Serve para**: Retorna todos os registros da tabela à direita (`Positions`), mesmo que não haja correspondência na tabela à esquerda (`Clients`). Os valores sem correspondência na tabela à esquerda aparecem como `NULL`.
+
+```sql
+SELECT c.ID AS client_id, c.name AS client_name, p.name_position AS position
+FROM public.Clients c
+RIGHT JOIN public.Positions p
+ON c.Positions_ID = p.ID;
+```
+
+**Resultado**: Retorna todas as posições, mesmo que não haja clientes associados a elas.
+
+### **4. FULL JOIN (ou FULL OUTER JOIN)**
+**Serve para**: Combina registros de ambas as tabelas, retornando todos os registros, mesmo quando não há correspondência. Valores sem correspondência aparecem como `NULL`.
+
+```sql
+SELECT c.ID AS client_id, c.name AS client_name, p.name_position AS position
+FROM public.Clients c
+FULL JOIN public.Positions p
+ON c.Positions_ID = p.ID;
+```
+
+**Resultado**: Retorna todos os clientes e todos os cargos, incluindo aqueles que não possuem correspondência entre si.
+
+### **5. CROSS JOIN**
+**Serve para**: Retorna o produto cartesiano das duas tabelas, combinando cada linha da tabela `Clients` com cada linha da tabela `Positions`.
+
+```sql
+SELECT c.ID AS client_id, c.name AS client_name, p.name_position AS position
+FROM public.Clients c
+CROSS JOIN public.Positions p;
+```
+
+**Resultado**: Cada cliente é combinado com cada posição, independentemente de qualquer relação.
+
+### **6. SELF JOIN**
+**Serve para**: É um join de uma tabela com ela mesma. Útil quando você precisa comparar registros da mesma tabela.
+
+#### Exemplo: Encontrar clientes com a mesma idade
+```sql
+SELECT c1.ID AS client_id_1, c1.name AS client_name_1, 
+       c2.ID AS client_id_2, c2.name AS client_name_2
+FROM public.Clients c1
+INNER JOIN public.Clients c2
+ON c1.age = c2.age AND c1.ID != c2.ID;
+```
+
+**Resultado**: Retorna pares de clientes que possuem a mesma idade.
+
+### **Resumo dos Tipos de JOIN**
+
+| **Tipo de JOIN** | **Descrição**                                                                                                                                     |
+|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| **INNER JOIN**   | Retorna apenas os registros com correspondência em ambas as tabelas.                                                                             |
+| **LEFT JOIN**    | Retorna todos os registros da tabela à esquerda, mesmo sem correspondência na tabela à direita.                                                  |
+| **RIGHT JOIN**   | Retorna todos os registros da tabela à direita, mesmo sem correspondência na tabela à esquerda.                                                  |
+| **FULL JOIN**    | Retorna todos os registros de ambas as tabelas, mesmo sem correspondência (valores não correspondentes aparecem como `NULL`).                    |
+| **CROSS JOIN**   | Retorna o produto cartesiano de ambas as tabelas (combina cada linha de uma tabela com cada linha da outra).                                      |
+| **SELF JOIN**    | Junta uma tabela com ela mesma, útil para comparar ou relacionar registros na mesma tabela.                                                      |
+
+----
+
 ## 🐘 | Inserts
 
 ```sql
